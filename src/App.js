@@ -1,9 +1,10 @@
 import { React } from 'react';
 import './App.scss';
+import Squares from './components/squares';
 
-const App = () =>
+const App = (context) =>
 	<div className="App" role="App">
-		Ready to start.
+		<Squares { ...{ ...context } }/>
 	</div>;
 
 export default App;
