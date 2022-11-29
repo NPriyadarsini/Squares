@@ -1,6 +1,6 @@
 
 const seed = {
-	columnCount: 0,
+	squareCount: 0,
 };
 
 export default seed;

@@ -1,5 +1,5 @@
 const setInput = ({ data }) => ({
-	columnCount: data,
+	squareCount: data,
 });
 const actions = {
 	setInput,
