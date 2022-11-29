@@ -4,14 +4,19 @@ import SquareManager from '../services/SquareManager';
 
 const Squares = (context) => {
 	const { state: { columnCount }} = context;
-	const boxes = SquareManager.Boxes(columnCount);
+	const boxes = SquareManager.GenerateSquares(columnCount);
 
-	return boxes.map(({ id, style }) =>
+	return boxes.map(({ id, size, margin, colum, row, offset }) =>
 		<div
 			key={ id }
 			{ ...{
 				className: 'square',
-				style: style,
+				style: {
+					top: `calc( 50vh + ${ (row * margin) - offset }px )`,
+					left: `calc( 50vw + ${ (colum * margin) - offset }px)`,
+					width: `${ size }px`,
+					height: `${ size }px`,
+				},
 			} }
 		/>);
 };
