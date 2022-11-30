@@ -1,6 +1,7 @@
 
 const seed = {
-	squareCount: 0,
+	squareCount: 9,
+	spacing: 0,
 };
 
 export default seed;

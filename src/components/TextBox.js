@@ -6,7 +6,7 @@ const TextBox = ({ state, actions }) =>
 		<input
 			id="input"
 			type="number"
-			value={ state.squareCount }
+			value={ state.spacing }
 			onChange={ (evt) =>
 				actions.setInput(evt.target.value) }
 		/>

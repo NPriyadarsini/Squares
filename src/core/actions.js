@@ -1,5 +1,5 @@
 const setInput = ({ data }) => ({
-	squareCount: data,
+	spacing: data,
 });
 const actions = {
 	setInput,
