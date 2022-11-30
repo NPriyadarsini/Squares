@@ -6,15 +6,12 @@ const Squares = (context) => {
 	const { state: { squareCount }} = context;
 	const boxes = SquareManager.generateSquares(squareCount);
 
-	return boxes.map(({ id, margin, column, row, offset }) =>
+	return boxes.map(({ id, style }) =>
 		<div
 			key={ id }
 			{ ...{
 				className: 'square',
-				style: {
-					top: `calc( 50vh + ${ (row * margin) - offset }px )`,
-					left: `calc( 50vw + ${ (column * margin) - offset }px)`,
-				},
+				style: style,
 			} }
 		/>);
 };
