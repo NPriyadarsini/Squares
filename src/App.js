@@ -1,12 +1,14 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import './App.scss';
 import Squares from './components/Squares';
-import TextBox from './components/TextBox';
+import Ticker from './components/Ticker';
 
-const App = (context) =>
-	<div className="App" role="App">
+const App = (context) => {
+	useEffect(() => Ticker.start(context), []);
+
+	return <div className="App" role="App">
 		<Squares { ...context }/>
-		<TextBox { ...context }/>
 	</div>;
+};
 
 export default App;

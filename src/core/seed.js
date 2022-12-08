@@ -1,6 +1,6 @@
 
 const seed = {
-	squareCount: 9,
+	squareCount: 0,
 	spacing: 0,
 };
 
