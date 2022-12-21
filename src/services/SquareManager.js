@@ -13,10 +13,13 @@ const SquareManager = {
 				id, row, column, margin,
 			};
 		}),
-	getSquareCount: ({ state: { squareCount }, config: { maxSquareCount }}) =>
-		(squareCount < maxSquareCount
+	getSquareCount: (context) => {
+		const { state: { squareCount }, config: { maxSquareCount }} = context;
+
+		return squareCount < maxSquareCount
 			? squareCount + 1
-			: 1),
+			: 1;
+	},
 };
 
 export default SquareManager;

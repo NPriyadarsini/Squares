@@ -2,12 +2,13 @@ import { React } from 'react';
 import SquareManager from '../services/SquareManager';
 
 const Squares = (context) => {
-	const { state: { squareCount, spacing }} = context;
-	const boxes = SquareManager.generateSquares(squareCount, spacing);
+	const { state: { squareCount }} = context;
+	const boxes = SquareManager.generateSquares(squareCount);
 
 	return boxes.map(({ id, row, column, margin }) =>
 		<div
 			key={ id }
+			role="squares"
 			{ ...{
 				className: 'square',
 				style: {
