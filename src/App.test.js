@@ -1,12 +1,38 @@
-import { render } from '@testing-library/react';
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { render, fireEvent } from '@testing-library/react';
+import React from 'react';
 
 import App from './App';
-import context from './core/context';
+import Ticker from './services/Ticker';
+import * as Squares from './components/Squares';
+import * as Popup from './components/Popup';
+import { rndString } from '@laufire/utils/random';
 
-describe('App', () => {
-	test('renders the component appropriately', () => {
-		const component = render(App(context)).getByRole('App');
+const random = rndString();
+const context = {
+	actions: {
+		toggleTicker: jest.fn(),
+	},
+	[`${ random }`]: random,
+};
 
-		expect(component).toBeInTheDocument();
-	});
+test('renders the component appropriately', () => {
+	jest.spyOn(React, 'useEffect').mockImplementation((fn) => fn());
+	jest.spyOn(Ticker, 'start').mockReturnValue();
+	jest.spyOn(Squares, 'default').mockReturnValue(<div role="squares"/>);
+	jest.spyOn(Popup, 'default').mockReturnValue(<div role="popup"/>);
+
+	const { getByRole } = render(App(context));
+
+	fireEvent.click(getByRole('App'));
+
+	expect(getByRole('App')).toBeInTheDocument();
+	expect(getByRole('squares')).toBeInTheDocument();
+	expect(getByRole('popup')).toBeInTheDocument();
+
+	expect(React.useEffect).toHaveBeenCalledWith(expect.any(Function), []);
+	expect(Ticker.start).toHaveBeenCalledWith(context);
+	expect(Squares.default.mock.calls[0][0]).toEqual(context);
+	expect(Popup.default.mock.calls[0][0]).toEqual(context);
+	expect(context.actions.toggleTicker).toHaveBeenCalledWith();
 });
