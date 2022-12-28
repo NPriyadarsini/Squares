@@ -13,6 +13,7 @@ describe('Popup', () => {
 
 		expect(getByRole('popup')).toBeInTheDocument();
 		expect(getByRole('paused')).toBeInTheDocument();
+		expect(getByRole('paused')).toHaveTextContent('PAUSED');
 	});
 	test('When tickerPaused is false - Popup is not displayed', () => {
 		const context = {
