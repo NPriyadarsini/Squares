@@ -2,7 +2,7 @@ import SquareManager from '../services/SquareManager';
 import Square from './Square';
 import Squares from './Squares';
 
-test('Displaying Squares', () => {
+test('Squares', () => {
 	const context = Symbol('context');
 	const boxesReturnValue = Symbol('boxesReturnValue');
 	const boxes = { map: jest.fn().mockReturnValue(boxesReturnValue) };

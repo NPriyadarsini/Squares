@@ -13,7 +13,7 @@ const context = {
 	actions: {
 		toggleTicker: jest.fn(),
 	},
-	[`${ random }`]: random,
+	random: random,
 };
 
 test('renders the component appropriately', () => {
