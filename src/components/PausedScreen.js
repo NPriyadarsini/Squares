@@ -1,6 +1,6 @@
 import { React } from 'react';
 
-const Popup = (context) => {
+const PausedScreen = (context) => {
 	const { state: { tickerPaused }} = context;
 
 	return tickerPaused && <div className="popup" role="popup">
@@ -8,4 +8,4 @@ const Popup = (context) => {
 	</div>;
 };
 
-export default Popup;
+export default PausedScreen;

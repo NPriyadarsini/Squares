@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react';
 import './App.scss';
-import Popup from './components/Popup';
+import PausedScreen from './components/PausedScreen';
 import Squares from './components/Squares';
 import Ticker from './services/Ticker';
 
@@ -15,7 +15,7 @@ const App = (context) => {
 				context.actions.toggleTicker() }
 		>
 			<Squares { ...context }/>
-			<Popup { ...context }/>
+			<PausedScreen { ...context }/>
 		</div>
 	);
 };

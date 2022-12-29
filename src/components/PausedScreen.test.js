@@ -1,28 +1,27 @@
 import { render } from '@testing-library/react';
-import Popup from './Popup';
+import PausedScreen from './PausedScreen';
 
-describe('Popup', () => {
-	test('When tickerPaused is true - Popup is displayed', () => {
+describe('PausedScreen', () => {
+	test('When Process is Paused - Paused Screen Displayed ', () => {
 		const context = {
 			state: {
 				tickerPaused: true,
 			},
 		};
 
-		const { getByRole } = render(Popup(context));
+		const { getByRole } = render(PausedScreen(context));
 
 		expect(getByRole('popup')).toBeInTheDocument();
 		expect(getByRole('paused')).toBeInTheDocument();
-		expect(getByRole('paused')).toHaveTextContent('PAUSED');
 	});
-	test('When tickerPaused is false - Popup is not displayed', () => {
+	test('When Process is Running  - Paused Screen is not Displayed', () => {
 		const context = {
 			state: {
 				tickerPaused: false,
 			},
 		};
 
-		const result = Popup(context);
+		const result = PausedScreen(context);
 
 		expect(result).toEqual(false);
 	});
