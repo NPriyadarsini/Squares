@@ -3,13 +3,13 @@ const Ticker = {
 	start: (context) => {
 		const { config: { TickerDelay }} = context;
 
-		return setInterval(() =>
+		setInterval(() =>
 			Ticker.toggleTicker(context), TickerDelay);
 	},
 	toggleTicker: (context) => {
 		const { state: { tickerPaused }, actions } = context;
 
-		return tickerPaused || actions.setInput(context);
+		tickerPaused || actions.setInput(context);
 	},
 };
 

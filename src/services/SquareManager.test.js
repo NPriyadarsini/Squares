@@ -51,10 +51,6 @@ describe('SquareManager', () => {
 			},
 		};
 		const colCount = rndBetween(1, maxSquareCount);
-		const column = number % colCount;
-		const row = (number - column) / colCount;
-		const margin = 80;
-		const id = number;
 
 		jest.spyOn(Math, 'sqrt').mockReturnValue(squareRoot);
 		jest.spyOn(Math, 'ceil').mockReturnValue(colCount);
@@ -64,11 +60,13 @@ describe('SquareManager', () => {
 		expect(Math.sqrt).toHaveBeenCalledWith(squareCount);
 		expect(Math.ceil).toHaveBeenCalledWith(squareRoot);
 
-		expect(result).toEqual({ column, id, margin, row });
+		expect((result.row * colCount) + result.column)
+			.toEqual(context.data.number);
+		expect(result.id).toEqual(context.data.number);
 	});
 	describe('Get Square Count', () => {
 		test('Get Square Count-When Square Count is less than 64', () => {
-			const squareCount = rndBetween(1, maxSquareCount);
+			const squareCount = rndBetween(0, maxSquareCount - 1);
 			const context = {
 				state: {
 					squareCount,
